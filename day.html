@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Us ♥</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a0010;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      overflow: hidden;
+    }
+
+    .hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-particle {
+      position: absolute;
+      bottom: -60px;
+      animation: floatHeart linear infinite;
+      opacity: 0;
+      color: #e8336d;
+    }
+
+    @keyframes floatHeart {
+      0%   { transform: translateY(0) rotate(-15deg) scale(0.8); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-110vh) rotate(15deg) scale(1.2); opacity: 0; }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .top-hearts {
+      font-size: 28px;
+      letter-spacing: 12px;
+      color: #e8336d;
+      margin-bottom: 1rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+
+ .headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: #f8d6e3;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  opacity: 0.95;
+}
+
+.headline::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 1px;
+  margin: 10px auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 77, 136, 0.8),
+    transparent
+  );
+}
+
+    .days-row {
+      margin: 1.4rem 0 0.8rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .days-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 18vw, 8rem);
+      font-weight: 700;
+      color: #ff4d88;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(232,51,109,0.35);
+    }
+
+ .days-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #f0b6cb;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  align-self: flex-end;
+  margin-bottom: 18px;
+}
+
+    .subtext {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #c97fa0;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .divider-line {
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(90deg, transparent, #8b3055, transparent);
+    }
+
+    .divider-heart { color: #e8336d; font-size: 14px; }
+
+    .time-grid {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .time-block {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(232,51,109,0.3);
+      border-radius: 14px;
+      padding: 18px 20px 12px;
+      min-width: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .time-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(232,51,109,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .time-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #ff4d88;
+      line-height: 1;
+      display: block;
+    }
+
+    .time-unit {
+      font-size: 0.68rem;
+      color: #a0607a;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .colon {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #8b3055;
+      animation: blink 1s step-end infinite;
+      line-height: 1;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.15; }
+    }
+
+    .footer-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #8b5570;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .total-seconds {
+      margin-top: 1rem;
+      font-size: 0.76rem;
+      color: #6b3a50;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .total-seconds span { color: #c97fa0; }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsContainer"></div>
+
+  <div class="wrapper">
+    <div class="top-hearts">♥ ♥ ♥</div>
+
+<p class="headline">IT HAS BEEN</p>
+    <div class="days-row">
+      <div class="days-number" id="dayCount">0</div>
+      <div class="days-label">days</div>
+    </div>
+
+    <p class="subtext">and still counting &hellip;</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-heart">♥</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="time-grid">
+      <div class="time-block">
+        <span class="time-val" id="hVal">00</span>
+        <span class="time-unit">Hours</span>
+      </div>
+      <div class="colon">:</div>
+      <div class="time-block">
+        <span class="time-val" id="mVal">00</span>
+        <span class="time-unit">Minutes</span>
+      </div>
+      <div class="colon">:</div>
+      <div class="time-block">
+        <span class="time-val" id="sVal">00</span>
+        <span class="time-unit">Seconds</span>
+      </div>
+    </div>
+
+    <p class="footer-quote">"every second with you is a treasure"</p>
+    <p class="total-seconds">total seconds together: <span id="totalSec">0</span></p>
+  </div>
+
+  <script>
+    const START = new Date('2025-08-14T20:00:00');
+
+    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+
+    function tick() {
+      const now  = new Date();
+      const diff = Math.max(0, now - START);
+      const totalSec = Math.floor(diff / 1000);
+
+      const days = Math.floor(diff / 86400000);
+      const rem  = diff % 86400000;
+      const hrs  = Math.floor(rem / 3600000);
+      const mins = Math.floor((rem % 3600000) / 60000);
+      const secs = Math.floor((rem % 60000) / 1000);
+
+      document.getElementById('dayCount').textContent = days;
+      document.getElementById('hVal').textContent     = pad(hrs);
+      document.getElementById('mVal').textContent     = pad(mins);
+      document.getElementById('sVal').textContent     = pad(secs);
+      document.getElementById('totalSec').textContent = totalSec.toLocaleString();
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    // Floating hearts
+    const container = document.getElementById('heartsContainer');
+    const symbols   = ['♥', '❤', '♡', '✿', '❥'];
+    for (let i = 0; i < 22; i++) {
+      const h = document.createElement('div');
+      h.className   = 'heart-particle';
+      h.textContent = symbols[i % symbols.length];
+      h.style.left             = (Math.random() * 100) + '%';
+      h.style.fontSize         = (11 + Math.random() * 16) + 'px';
+      h.style.animationDuration = (9 + Math.random() * 14) + 's';
+      h.style.animationDelay   = (-Math.random() * 22) + 's';
+      container.appendChild(h);
+    }
+  </script>
+</body>
+</html>
